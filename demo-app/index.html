@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elementizer demo</title>
+</head>
+<body>
+  <script type="module">
+import 'elementizer-demo-elements/button';
+import 'elementizer-demo-elements/tab';
+  </script>
+  <h1>Elementizer Demo</h1>
+  <p><a href="https://github.com/badcafe/elementizer/tree/main/demo-app">This demo</a> is made exclusively of Web components that are implemented in React.</p>
+  <p><a href="https://badcafe.github.io/elementizer">Elementizer</a> is the lib that expose React elements to Web components.</p>
+  <p>The demo shows some interactions of buttons, toggle buttons, and tabs with Javascript.</p>
+
+  <demo-tab-group id="demo" onselectionchange="tabChanged(event)">
+    <demo-tab label="Main tab" id="mainTab">
+        <demo-toggle-button
+            variant="positive"
+            selected
+            onclick="changeNextTab(event)"
+        >
+            <span id="state">Disable</span> the next tab
+        </demo-toggle-button>
+        <div style="margin-top: 0.5em;">
+            <demo-tab-group variant="informative" orientation="vertical">
+                <demo-tab label='Info'>
+                    This is a Demo
+                </demo-tab>
+                <demo-tab label='Help'>
+                    Visit <a href="https://badcafe.github.io/elementizer">Elementizer</a>
+                </demo-tab>
+            </demo-tab-group>
+        </div>
+    </demo-tab>
+    <demo-tab id="nextTab">
+        <demo-tab-label><b id="nextTabState">Active</b> tab</demo-tab-label>
+    This tab can be disabled by clicking on the toggle button in the <demo-button onclick="goToMainTab()">Main tab</demo-button>.
+    </demo-tab>
+    <demo-tab label="Warning" variant="negative">
+        React and Web components are incompatible by design. However, Elementizer is efficient for the most common usages.
+        <exemple-use-foo-context/>
+    </demo-tab>
+  </demo-tab-group>
+
+  <p>The current tab internal ID is : <span id="currentTab"></span></p>
+  <p>Select your preferred technology :</p>
+  <demo-toggle-button-group variant="informative">
+    <demo-toggle-button>
+        Web components
+    </demo-toggle-button>
+    <demo-toggle-button
+    >
+        Elementizer
+    </demo-toggle-button>
+    <demo-toggle-button
+        variant="positive"
+    >
+        React
+    </demo-toggle-button>
+  </demo-toggle-button-group>
+
+  <div style="margin-top: 0.5em;">
+    <demo-button variant="positive" id="okButton" onpress="ok(event)">OK</demo-button>
+    <demo-button variant="negative" id="cancelButton" onpress="cancel(event)">Cancel</demo-button>
+  </div>
+
+  <script>
+    function changeNextTab(event) {
+        if (nextTab.hasAttribute('disabled')) {
+            // works because attributes mutations cause React rerendering
+            nextTab.removeAttribute('disabled');
+            state.textContent = 'Disable';
+            nextTabState.textContent = 'Active';
+            event.currentTarget.setAttribute('variant', 'positive');
+        } else {
+            nextTab.setAttribute('disabled', '');
+            state.textContent = 'Enable';
+            nextTabState.textContent = 'Inactive';
+            event.currentTarget.setAttribute('variant', 'negative');
+        }
+    }
+    function tabChanged({event}) {
+        currentTab.textContent = event;
+    }
+    function goToMainTab() {
+        // 1) we can't use mainTab.click()
+        // because the tab group pull the components by itself
+        // 2) we can't lookup for the id 'mainTab-elementizer'
+        // because the react-aria lib generate other internal ids
+        // but react-aria set a data-key attribute with that value
+        for (const el of demo.getElementsByClassName('react-aria-Tab')) {
+            if (el.getAttribute('data-key') === 'mainTab-elementizer') {
+                el.click();
+            }
+        }
+    }
+    function ok(event) {
+        toggleDisable(cancelButton);
+    }
+    function cancel(event) {
+        toggleDisable(okButton);
+    }
+    function toggleDisable(elem) {
+        if (elem.hasAttribute('disabled')) {
+            elem.removeAttribute('disabled');
+        } else {
+            elem.setAttribute('disabled', '');
+        }
+    }
+  </script>
+</body>
+</html>

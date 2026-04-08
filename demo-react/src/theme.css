@@ -1,0 +1,142 @@
+:root {
+  --react-aria-bw-shift: 0.1;
+  --react-aria-lighter: 0.35;
+  --react-aria-darker: -0.2;
+  --react-aria-weak-ratio: calc(1 / 7);
+  --react-aria-light-disabled: 0.9;
+  --react-aria-chroma-disabled: 0.035;
+  --react-aria-light-disabled-dark: 0.45;
+
+  --react-aria-bg-base-color: oklch(0.98 0 0);
+  --react-aria-fg-base-color: oklch(0.2 0 0);
+
+    font-family: system-ui;
+    font-size: 14px;
+    line-height: 1.5;
+    block-size: 100%;
+}
+
+:root, * {
+  --react-aria-bg-grey: oklch(0.5 0 0);
+  --react-aria-fg-grey: oklch(0.9 0 0);
+}
+
+:root {
+    background-color: var(--react-aria-bg-base-color);
+    color: var(--react-aria-fg-base-color);
+}
+
+* {
+  --react-aria-variant-base-color: var(--react-aria-color);
+  --react-aria-variant-strong-color: oklch(from var(--react-aria-color) calc(l + var(--react-aria-darker)) c h);
+  --react-aria-variant-weak-color: oklch(from var(--react-aria-color) calc(l - var(--react-aria-darker) * 4) calc(c * var(--react-aria-weak-ratio)) h);
+  --react-aria-bw-variant-base-color: oklch(from var(--react-aria-color) round(1 - l + var(--react-aria-bw-shift), 1) 0 0);
+}
+
+* {
+  --react-aria-bg-fill-color: var(--react-aria-variant-base-color, var(--react-aria-bg-base-color));
+  --react-aria-fg-fill-color: var(--react-aria-bw-variant-base-color, var(--react-aria-fg-base-color));
+  --react-aria-bg-outline-color: var(--react-aria-bg-base-color);
+  --react-aria-fg-outline-color: var(--react-aria-variant-strong-color, var(--react-aria-fg-base-color));
+
+  --react-aria-border-color: var(--react-aria-fg-outline-color);
+  --react-aria-focus-color: var(--react-aria-fg-outline-color);
+
+  --react-aria-bg-color: var(--react-aria-bg-outline-color);
+  --react-aria-fg-color: var(--react-aria-fg-outline-color);
+}
+
+*[data-appearance="fill"] {
+  --react-aria-bg-color: var(--react-aria-bg-fill-color);
+  --react-aria-fg-color: var(--react-aria-fg-fill-color);
+}
+
+* {
+    /*[data-hovered]*/
+  --react-aria-bg-color-hovered: oklch(from var(--react-aria-variant-weak-color, var(--react-aria-bg-color)) calc(l + var(--react-aria-darker) / 3) c h);
+  --react-aria-fg-color-hovered: var(--react-aria-fg-color);
+    &[data-appearance="fill"] {
+      --react-aria-bg-color-hovered: oklch(from var(--react-aria-bg-color) calc(l + var(--react-aria-darker) / 3) c h);
+      --react-aria-fg-color-hovered: oklch(from var(--react-aria-bg-color-hovered) round(1 - l + var(--react-aria-bw-shift), 1) 0 0)      
+    }
+
+    /*[data-pressed]*/
+  --react-aria-bg-color-pressed: oklch(from var(--react-aria-variant-weak-color, var(--react-aria-bg-color)) calc(l + var(--react-aria-darker) / 2) c h);
+  --react-aria-fg-color-pressed: oklch(from var(--react-aria-fg-color) l calc(c - 0.1) h);
+    &[data-appearance="fill"] {
+      --react-aria-bg-color-pressed: oklch(from var(--react-aria-bg-color) calc(l + var(--react-aria-darker) / 2) c h);
+      --react-aria-fg-color-pressed: oklch(from var(--react-aria-bg-color-pressed) round(1 - l + var(--react-aria-bw-shift), 1) 0 0)      
+    }
+
+    /*[data-selected]*/
+  --react-aria-bg-color-selected: oklch(from var(--react-aria-variant-weak-color, var(--react-aria-bg-color)) calc(l + var(--react-aria-darker)) c h);
+  --react-aria-fg-color-selected: oklch(from var(--react-aria-fg-color) l 0 h);
+    &[data-appearance="fill"] {
+      --react-aria-bg-color-selected: oklch(from var(--react-aria-bg-color) calc(l + var(--react-aria-darker)) c h);
+      --react-aria-fg-color-selected: oklch(from var(--react-aria-bg-color-selected) round(1 - l + var(--react-aria-bw-shift), 1) 0 0)      
+    }
+
+    /*[data-disabled]*/
+  --react-aria-bg-color-disabled: oklch(from var(--react-aria-bg-color) calc(l - var(--react-aria-darker) / 3) c h);
+  --react-aria-fg-color-disabled: oklch(from var(--react-aria-fg-color) l c h / var(--react-aria-light-disabled));
+  --react-aria-fg-color-disabled: oklch(from var(--react-aria-color, var(--react-aria-bg-grey)) var(--react-aria-light-disabled) var(--react-aria-chroma-disabled) h);
+    &[data-appearance="fill"] {
+      --react-aria-fg-color-disabled: oklch(from var(--react-aria-fg-color) l c h / var(--react-aria-light-disabled));
+      --react-aria-bg-color-disabled: oklch(from var(--react-aria-bg-color) calc(l - var(--react-aria-darker) / 2) calc(c / 2.5) h);
+      --react-aria-fg-color-disabled: oklch(from var(--react-aria-color, var(--react-aria-bg-grey)) l calc(c / 2.5) h);
+    }
+
+    &[data-variant="neutral"],
+    &:not([data-variant]) {
+      --react-aria-fg-color-disabled: var(--react-aria-bg-grey);
+    }
+}
+
+*[data-disabled] {
+  --react-aria-border-color: oklch(from var(--react-aria-bg-color) calc(l + var(--react-aria-darker)) c h);
+    &[data-appearance="fill"] {
+      --react-aria-border-color: oklch(from var(--react-aria-bg-color) l var(--react-aria-chroma-disabled) h); 
+    }
+}
+
+* {
+    &[data-variant="neutral"] {
+      --react-aria-color: rgb(170, 170, 170);
+    }
+    &[data-variant="positive"] {
+      --react-aria-color: #319f0c;
+    }
+    &[data-variant="negative"] {
+      --react-aria-color: #a81015;
+    }
+    &[data-variant="informative"] {
+      --react-aria-color: #1182cd;
+    }
+}
+
+* {
+    &[data-size="tiny"] {
+      --react-aria-font-size: 0.6rem
+    }
+    &[data-size="small"] {
+      --react-aria-font-size: 0.8rem
+    }
+    &[data-size="medium"] {
+      --react-aria-font-size: 1rem
+    }
+    &[data-size="large"] {
+      --react-aria-font-size: 1.3rem
+    }
+    &[data-size="big"] {
+      --react-aria-font-size: 1.6rem
+    }
+    &[data-size="huge"] {
+      --react-aria-font-size: 2rem
+    }
+}
+
+/* fixup */
+table {
+    /* prevent { color: -moz-inherit-from-body-quirk; } */
+    color: inherit;
+}

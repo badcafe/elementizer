@@ -1,0 +1,47 @@
+.react-aria-ToggleButtonGroup > slot > demo-toggle-button > button {
+    border-radius: 0;
+    z-index: 1;
+
+    &[data-disabled] {
+        z-index: 0;
+    }
+    &[data-selected] {
+        z-index: 2;
+    }
+    &[data-focus-visible] {
+        z-index: 3;
+    }
+}
+
+.react-aria-ToggleButtonGroup[data-orientation=horizontal] {
+    > slot > demo-toggle-button {
+        > button {
+            margin-inline-start: -1px;
+        }
+        &:first-child > button {
+            border-radius: var(--react-aria-border-radius) 0 0 var(--react-aria-border-radius);
+            margin-inline-start: 0;
+        }
+        &:last-child > button {
+            border-radius: 0 var(--react-aria-border-radius) var(--react-aria-border-radius) 0;
+        }
+    }
+}
+
+.react-aria-ToggleButtonGroup[data-orientation=vertical] {
+    > slot > demo-toggle-button {
+        > button {
+        margin-block-start: -1px;
+        }
+        &:first-child > button {
+            border-radius: var(--react-aria-border-radius) var(--react-aria-border-radius) 0 0;
+            margin-block-start: 0;
+        }
+        &:last-child > button {
+            border-radius: 0 0 var(--react-aria-border-radius) var(--react-aria-border-radius);
+        }
+    }
+}
+.react-aria-ToggleButtonGroup > slot > demo-toggle-button:first-child:last-child > button {
+    border-radius: var(--react-aria-border-radius) var(--react-aria-border-radius) var(--react-aria-border-radius) var(--react-aria-border-radius);
+}

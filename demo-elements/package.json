@@ -1,0 +1,47 @@
+{
+  "name": "elementizer-demo-elements",
+  "version": "1.0.0",
+  "description": "Web components demo converted from React components",
+  "author": "Philippe Poulard <philippe.poulard@inria.fr>",
+  "license": "MIT",
+  "keywords": [
+    "React",
+    "Web components",
+    "HTML"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badcafe/elementizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/badcafe/elementizer/issues"
+  },
+  "homepage": "https://badcafe.github.io/elementizer",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc",
+    "postcompile": "npx copyfiles -f ./src/*.css ./dist/"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md",
+    "logo.svg"
+  ],
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "elementizer-demo-react": "1.0.0",
+    "@badcafe/elementizer": "1.0.0"
+  },
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  }
+}

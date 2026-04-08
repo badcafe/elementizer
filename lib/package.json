@@ -1,0 +1,51 @@
+{
+  "name": "@badcafe/elementizer",
+  "version": "1.0.0",
+  "description": "Convert React components to Web components",
+  "author": "Philippe Poulard <philippe.poulard@inria.fr>",
+  "license": "MIT",
+  "keywords": [
+    "React",
+    "Web components",
+    "HTML"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badcafe/elementizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/badcafe/elementizer/issues"
+  },
+  "homepage": "https://badcafe.github.io/elementizer",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc",
+    "apidoc": "tsx scripts/apidoc.ts src/elements.tsx createElement ; tsx scripts/apidoc.ts src/elements.tsx Slot",
+    "doc": "(echo \"<!-- do not edit, this file has been generated ; \\n     see doc-src/README-SRC.md -->\\n\"; cat doc-src/README-SRC.md; npm run --silent apidoc) > README.md"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md",
+    "logo.svg"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "concat-md": "^0.5.1",
+    "tsx": "^4.21.0",
+    "typedoc": "^0.28.18",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "mobx-react-lite": "^4.1.1",
+    "react": "^19.2.4"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/elements.d.ts",
+      "default": "./dist/elements.js"
+    }
+  }
+}

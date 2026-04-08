@@ -1,0 +1,111 @@
+@import "./theme.css";
+
+.react-aria-Button {
+
+  --react-aria-button-bg-color: var(--react-aria-bg-color);
+  --react-aria-button-fg-color: var(--react-aria-fg-color);
+  --react-aria-button-font-size: 1rem;
+  --react-aria-border-radius: 8px;
+
+    &[data-size] {
+      --react-aria-button-font-size: var(--react-aria-font-size);
+    }
+
+    &[data-focused]::before, &[data-focus-visible] {
+        position: relative;
+        outline: 2px solid var(--react-aria-focus-color);
+        outline-offset: 2px;
+    }
+    &[data-hovered] {
+      --react-aria-button-bg-color: var(--react-aria-bg-color-hovered);
+      --react-aria-button-fg-color: var(--react-aria-fg-color-hovered);
+    }
+    &[data-selected] {
+      --react-aria-button-bg-color: var(--react-aria-bg-color-selected);
+      --react-aria-button-fg-color: var(--react-aria-fg-color-selected);
+    }
+    &[data-pressed] {
+      --react-aria-button-bg-color: var(--react-aria-bg-color-pressed);
+      --react-aria-button-fg-color: var(--react-aria-fg-color-pressed);
+    }
+    &[data-disabled] {
+      --react-aria-button-bg-color: var(--react-aria-bg-color-disabled);
+      --react-aria-button-fg-color: var(--react-aria-fg-color-disabled);
+        pointer-events: none
+    }
+
+    background-color: var(--react-aria-button-bg-color);
+    color: var(--react-aria-button-fg-color);
+    font-size: var(--react-aria-button-font-size);
+
+    border-radius: var(--react-aria-border-radius);
+    border: 1px solid var(--react-aria-border-color);
+    appearance: none;
+    vertical-align: middle;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+    outline: none;
+    padding: 6px 10px;
+    text-decoration: none;
+
+}
+
+.react-aria-ButtonGroup {
+    display: inline-flex;
+
+    > button {
+        border-radius: 0;
+        z-index: 1;
+    
+        &[data-disabled] {
+            z-index: 0;
+        }
+        &[data-selected] {
+            z-index: 2;
+        }
+        &[data-focus-visible] {
+            z-index: 3;
+        }
+    }
+}
+
+.react-aria-ButtonGroup[data-orientation=horizontal] {
+    flex-direction: row;
+  
+    > button {
+        margin-inline-start: -1px;
+
+        &:first-child {
+            border-radius: var(--react-aria-border-radius) 0 0 var(--react-aria-border-radius);
+            margin-inline-start: 0;
+        }
+  
+        &:last-child {
+            border-radius: 0 var(--react-aria-border-radius) var(--react-aria-border-radius) 0;
+        }
+    }
+}
+
+.react-aria-ButtonGroup[data-orientation=vertical] {
+    flex-direction: column;
+    width: fit-content;
+  
+    > button {
+        margin-block-start: -1px;
+        
+        &:first-child {
+            border-radius: var(--react-aria-border-radius) var(--react-aria-border-radius) 0 0;
+            margin-block-start: 0;
+        }
+    
+        &:last-child {
+            border-radius: 0 0 var(--react-aria-border-radius) var(--react-aria-border-radius);
+        }
+    }
+
+}
+
+.react-aria-ButtonGroup > button:first-child:last-child {
+    border-radius: var(--react-aria-border-radius) var(--react-aria-border-radius) var(--react-aria-border-radius) var(--react-aria-border-radius);
+}

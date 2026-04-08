@@ -1,0 +1,154 @@
+@import "./theme.css";
+
+.react-aria-Tabs, .react-aria-Tab, .react-aria-TabPanel {
+
+  --react-aria-tab-border-color: var(--react-aria-border-color);
+  --react-aria-tab-bg-color: var(--react-aria-bg-color);
+  --react-aria-tab-fg-color: var(--react-aria-fg-color);
+  --react-aria-border-radius: 8px;
+
+    display: flex;
+    color: var(--react-aria-tab-fg-color);
+    max-width: 100%;
+
+    &[data-orientation=horizontal] {
+        flex-direction: column;
+    }
+}
+
+.react-aria-TabList {
+    display: flex;
+
+    .react-aria-SelectionIndicator {
+        background: var(--react-aria-tab-border-color);
+    }
+    &[data-orientation=horizontal] {
+        border-bottom: 0.5px solid var(--react-aria-tab-border-color);
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: clip;
+        scrollbar-width: none;
+    }
+    &[data-orientation=vertical] {
+        flex-direction: column;
+    }
+}
+.react-aria-TabList[data-orientation=horizontal] .react-aria-SelectionIndicator {
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 4px;
+    z-index: 1;
+    transition-property: translate, width, background-color;
+}
+.react-aria-TabList[data-orientation=horizontal] .react-aria-Tab {
+    border-radius: var(--react-aria-border-radius) var(--react-aria-border-radius) 0 0;
+}
+.react-aria-TabList[data-orientation=vertical] .react-aria-Tab {
+    border-radius: var(--react-aria-border-radius) 0 0 var(--react-aria-border-radius);
+}
+.react-aria-TabList[data-orientation=vertical] .react-aria-SelectionIndicator {
+    top: 0;
+    right: 0px;
+    height: 100%;
+    width: 4px;
+    z-index: 1;
+    transition-property: translate, height, background-color;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .react-aria-Tab {
+        transition: color 200ms;
+    }
+}
+
+.react-aria-Tab {
+    padding: 10px;
+    cursor: default;
+    outline: none;
+    position: relative;
+    color: var(--react-aria-tab-fg-color);
+    background-color: var(--react-aria-tab-bg-color);
+  --react-aria-tab-border-color: transparent;
+    forced-color-adjust: none;
+
+    &[data-focused] {
+        color: var(--react-aria-fg-color-hovered);
+    }
+    &[data-hovered] {
+      --react-aria-tab-bg-color: var(--react-aria-bg-color-hovered);
+      --react-aria-tab-fg-color: var(--react-aria-fg-color-hovered);
+    }
+
+    &[data-selected] {
+      --react-aria-tab-border-color: var(--react-aria-border-color); /*--react-aria-bg-color-selected*/
+        color: var(--react-aria-tab-fg-color);
+    }
+
+    &[data-disabled] {
+        color: var(--react-aria-fg-color-disabled);
+
+        &[data-selected] {
+          --react-aria-tab-border-color: var(--react-aria-fg-color-disabled);
+        }
+    }
+
+    &[data-focus-visible]:after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border-radius: 4px;
+        border: 2px solid var(--react-aria-focus-color);
+    }
+}
+.react-aria-Tab .react-aria-SelectionIndicator {
+    position: absolute;
+    transition-duration: 200ms;
+    border-radius: 3px;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+}
+.react-aria-TabPanel {
+    display: block;
+    margin-top: 4px;
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+
+    &[data-focus-visible] {
+        outline: 2px solid var(--react-aria-focus-color);
+    }
+}
+
+.react-aria-Tabs {
+    &[data-orientation=vertical] {
+        flex-direction: row;
+    }
+}
+.react-aria-Tabs[data-orientation=vertical] .react-aria-TabPanel {
+    margin-left: 4px;
+}
+
+.react-aria-TabList {
+    &[data-orientation=vertical] {
+        flex-direction: column;
+        border-inline-end: 1px solid gray;
+    }
+}
+
+.react-aria-Tab {
+    &[data-disabled] {
+        color: var(--react-aria-fg-color-disabled);
+
+        &[data-selected] {
+          --react-aria-tab-border-color: var(--react-aria-fg-color-disabled);
+        }
+    }
+}
+
+.react-aria-Tab[href] {
+    text-decoration: none;
+    cursor: pointer;
+}
