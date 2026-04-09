@@ -17,6 +17,8 @@ This present demo aims to show with real exemples the simplest usage to the more
    * The counterpart Web components library: `elementizer-demo-elements`, which is build with Elementizer from the React elements
    * A small demo web app (this)
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/badcafe/elementizer/tree/main/demo-app)
+
 ## The demo
 
 We are starting with few React components, based on the [`react-aria`](https://www.npmjs.com/package/react-aria) library :

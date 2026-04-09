@@ -5,7 +5,7 @@
 `@badcafe/elementizer` is a JavaScript library that exposes any [React](https://react.dev/) component as a [Web component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components).
 
 <p style='align: center'>
-    <img src="logo.svg"/>
+    <img src="https://raw.githubusercontent.com/badcafe/elementizer/refs/heads/main/lib/logo.svg"/>
 </p>
 
 <div style="display: flex;">
@@ -29,6 +29,9 @@ For more complex cases :
 
 </div>
 </div>
+
+* [Github repo](https://github.com/badcafe/elementizer/tree/main/lib)
+* [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/badcafe/elementizer/tree/main/demo-app)
 
 ### Setup
 

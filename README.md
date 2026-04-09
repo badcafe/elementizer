@@ -8,4 +8,4 @@
     <img src="lib/logo.svg"/>
 </p>
 
-[Elementizer](https://badcafe.github.io/elementizer) : Library and documentation
+[Elementizer](https://badcafe.github.io/elementizer) : Library, documentation, and demo.
