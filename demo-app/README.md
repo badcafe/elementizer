@@ -56,7 +56,7 @@ As explained in the library documentation, additional structural elements are re
 This is the case for our toggle buttons.
 
 > See them in `elementizer-demo-elements`:
-> * [Typescript source](https://github.com/badcafe/elementizer/blob/main/demo-elements/src/button.tsx)
+> * [Typescript source](https://github.com/badcafe/elementizer/blob/main/demo-elements/src/button.ts)
 > * [CSS fixup source](https://github.com/badcafe/elementizer/blob/main/demo-elements/src/button.css)
 
 ### Tabs
@@ -75,14 +75,14 @@ Like the above buttons, the counterpart Web components are also declaring simila
 
 Unlike the above buttons, all Web components are calling `createElement()` with a specific `render()` method :
 
-* `<aerial-tab-group>`: since the counterpart React component doesn't deal directly with child nodes, the tab items and tab panels have to be pulled to the group
-* `<aerial-tab>`: we are passing empty children
+* `<demo-tab-group>`: since the counterpart React component doesn't deal directly with child nodes, the tab items and tab panels have to be pulled to the group
+* `<demo-tab>`: we are passing empty children
     * the original will be moved WHEN mounted by React, when the `<Tab>` will be eventually selected
     * meanwhile, the panel is not displayed by the CSS
     * NOTE: the `label` prop of the React component can be a `string` or a React node ; the latter form implies having a dedicated Web component :
-* `<aerial-tab-label>`: used to host the tab label when made of elements. This component is not rendered by itself, but pulled by its parent `<aerial-tab>`
+* `<demo-tab-label>`: used to host the tab label when made of elements. This component is not rendered by itself, but pulled by its parent `<demo-tab>`
 
-Since the React structure is pulled of the Web components, the React hierarchy is preserved and no CSS fixup are required. However, the `<aerial-tab>` original content (HTML) must not be displayed (since pulled in the React tree).
+Since the React structure is pulled of the Web components, the React hierarchy is preserved and no CSS fixup are required. However, the `<demo-tab>` original content (HTML) must not be displayed (since pulled in the React tree).
 
 > See them in `elementizer-demo-elements`:
 > * [Typescript source](https://github.com/badcafe/elementizer/blob/main/demo-elements/src/tab.tsx)
