@@ -1,6 +1,6 @@
 {
   "name": "elementizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web components demo converted from React components",
   "author": "Philippe Poulard <philippe.poulard@inria.fr>",
   "license": "MIT",
