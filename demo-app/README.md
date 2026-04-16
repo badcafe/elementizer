@@ -96,7 +96,7 @@ Now, you can examine the [HTML source](https://github.com/badcafe/elementizer/bl
 
 ```bash
 npm install elementizer
-npm run dev
+npx elementizer
 ```
 
 Open http://localhost:8080 you will see buttons and tabs, implemented in React, but used as Web components.

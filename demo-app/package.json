@@ -1,6 +1,6 @@
 {
   "name": "elementizer",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Web components demo converted from React components",
   "author": "Philippe Poulard <philippe.poulard@inria.fr>",
   "license": "MIT",
@@ -21,23 +21,25 @@
   "scripts": {
     "dev": "vite serve --port 8080"
   },
+  "bin": "./bin/cli.js",
   "files": [
     "index.html",
     "README.md",
     "LICENSE.md",
     "logo.svg",
-    "vite.config.js"
+    "vite.config.js",
+    "bin/cli.js"
   ],
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "typescript": "^6.0.2",
-    "vite": "^8.0.3"
+    "typescript": "^6.0.2"
   },
   "dependencies": {
-    "elementizer-demo-elements": "1.0.0",
-    "elementizer-demo-react": "1.0.0",
-    "react": "^19.2.4"
+    "elementizer-demo-elements": "1.1.0",
+    "elementizer-demo-react": "1.1.0",
+    "react": "^19.2.4",
+    "vite": "^8.0.3"
   },
   "exports": {
     ".": {
