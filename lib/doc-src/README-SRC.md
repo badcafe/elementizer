@@ -504,3 +504,4 @@ const MyCustomElement = createElement({
 })
 ```
 
+<div id="api"/>

@@ -507,6 +507,7 @@ const MyCustomElement = createElement({
 })
 ```
 
+<div id="api"/>
 <table>
   <thead>
     <tr>
