@@ -126,7 +126,7 @@ const FooElement = createElement({
             // the variant was initialized with the value "neutral",
             // (<exemple-foo variant="neutral" ...)
             // which is an invalid JSON value, and falls back to a string
-            const Variant = ['positive' | 'informative' | 'negative'];
+            const Variant = ['positive', 'informative', 'negative'];
             const variant = Variant[Math.floor(Math.random() * Variant.length)];
             nested.textContent = variant;
             // the variant will be set as a string to the React prop
@@ -140,7 +140,7 @@ const FooElement = createElement({
 
 Attribute values are strings, whereas React props may be... anything else.
 
-We assume that the `Foo` React component expects the `size` prop as a number, and that the `variant` prop can have only the given values; we also introduce a `disable` boolean attribute mapped to the `isDisabled` React prop:
+Below, we assume that the `Foo` React component expects the `size` prop as a number, and that the `variant` prop can have only the given values; we also introduce a `disable` boolean attribute mapped to the `isDisabled` React prop:
 
 #### `foo.ts`
 ```ts
@@ -152,7 +152,7 @@ const FooElement = createElement({
     reactComponent: Foo,
     attributes: [
         ['size', Number],
-        ['variant', ['positive' | 'informative' | 'negative']],
+        ['variant', ['positive', 'informative', 'negative']],
         ['disabled', Boolean, 'isDisabled']
     ]
 })
@@ -220,7 +220,7 @@ They work out of the box:
     </exemple-foo>
     <script>
         function doClick(e) {
-            const Variant = ['positive' | 'informative' | 'negative'];
+            const Variant = ['positive', 'informative', 'negative'];
             const variant = Variant[Math.floor(Math.random() * Variant.length)];
             nested.textContent = variant;
             e.currentTarget.setAttribute('variant', variant);
@@ -245,7 +245,7 @@ Using `this` is like in any other JavaScript code:
     </exemple-foo>
     <script>
         function doClick(e) {
-            const Variant = ['positive' | 'informative' | 'negative'];
+            const Variant = ['positive', 'informative', 'negative'];
             const variant = Variant[Math.floor(Math.random() * Variant.length)];
             nested.textContent = variant;
             this.setAttribute('variant', variant);
@@ -268,7 +268,7 @@ Using `this` is like in any other JavaScript code:
     </exemple-foo>
     <script>
         myFoo.onclick = function doClick(e) {
-            const Variant = ['positive' | 'informative' | 'negative'];
+            const Variant = ['positive', 'informative', 'negative'];
             const variant = Variant[Math.floor(Math.random() * Variant.length)];
             nested.textContent = variant;
             this.setAttribute('variant', variant);
@@ -291,7 +291,7 @@ Using `this` is like in any other JavaScript code:
     </exemple-foo>
     <script>
         const fooClickListener = myFoo.addEventListener('click', function doClick(e) {
-            const Variant = ['positive' | 'informative' | 'negative'];
+            const Variant = ['positive', 'informative', 'negative'];
             const variant = Variant[Math.floor(Math.random() * Variant.length)];
             nested.textContent = variant;
             this.setAttribute('variant', variant);
@@ -316,7 +316,7 @@ On the React side, a component may manage a specific event, e.g. `onPress()`. In
     </exemple-foo>
     <script>
         function doPress(e) {
-            const Variant = ['positive' | 'informative' | 'negative'];
+            const Variant = ['positive', 'informative', 'negative'];
             const variant = Variant[Math.floor(Math.random() * Variant.length)];
             nested.textContent = variant;
             e.currentTarget.setAttribute('variant', variant);
@@ -343,7 +343,7 @@ const FooElement = createElement({
     reactComponent: Foo,
     attributes: [
         ['size', Number],
-        ['variant', ['positive' | 'informative' | 'negative']],
+        ['variant', ['positive', 'informative', 'negative']],
         ['disabled', Boolean, 'isDisabled']
     ],
     eventMappers: {
